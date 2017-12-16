@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle blockit",
+        "command": "blockit:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "blockit",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "blockit:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
