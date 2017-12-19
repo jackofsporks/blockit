@@ -18,7 +18,7 @@
 "/>" closing tag closing slash and bracket
 
 ### TODO
-- Buttons to insert
+- √ Buttons (to later insert)
 - Insert text
 - Color things purty
 - Analyze surroundings
@@ -31,6 +31,7 @@
   - File extension? (ends in k?) jsk/htmlk/cssk/lessk/txtk? v? jsv/htmlv/cssv/lessv/jsxv/txtv
 - Drag around blocks
 - Draggable from board here? Or only when integrating with OSK?
+- Brainstrom behavior
 
 ### Behavior
 
