@@ -27,6 +27,10 @@
     {
       "name": "NOTE",
       "hidden": false
+    },
+    {
+      "name": "QUESTION",
+      "hidden": false
     }
   ],
   "marked": {
