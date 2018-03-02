@@ -15,7 +15,8 @@
       "NOTE",
       "REVIEW",
       "MARK",
-      "QUESTION"
+      "QUESTION",
+      "BUG"
     ]
   },
   "lists": [
