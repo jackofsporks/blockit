@@ -31,6 +31,10 @@
     {
       "name": "QUESTION",
       "hidden": false
+    },
+    {
+      "name": "BUG",
+      "hidden": false
     }
   ],
   "marked": {
