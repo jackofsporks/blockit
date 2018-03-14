@@ -88,7 +88,7 @@ block = {
   parent: {"another tag block"},
   type: "block",
   deleters: /[<>{}]/, // start + middle + end...? Nopes can't do it for attributes with values. DO FUNCTION INSTEAD!
-  token: { // NOTE Only current block has a token
+  token: { // NOTE Only current block has a token id:80 gh:89 ic:gh
     parent: block, // Just name of parent?
     type: "token",
     hierarchy: "parent.left.left.1", // Cursor position but why need this??
@@ -123,7 +123,7 @@ block = {
   right/value/result: {type: "multi", body: [
     {type: "multi"??, name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
     // {type: "multi"??, species: "TextNode", body: ["stoof"]}, // body of words but don't need to know that
-    {type: "block", name: "p", location: {start: 5, end: 8}} // NOTE location so when offereing to change tag name of block then can highlight what will be deleted as invalid.
+    {type: "block", name: "p", location: {start: 5, end: 8}} // NOTE location so when offereing to change tag name of block then can highlight what will be deleted as invalid. id:81 gh:90 ic:gh
   ]}, // Everything as text or also direct children tag names? Multi?
   end:{
     type: "syntax", position: "end",
@@ -159,7 +159,7 @@ block = {
 // Example --> delete type attribute for input element then?
 // Then make sure type is text? Delete all non-relevant sibling attributes?
 // Confirm for deletion + add to deletion
-// QUESTION When select blocks then highlight dependent blocks?
+// QUESTION When select blocks then highlight dependent blocks? id:82 gh:91 ic:gh
 
 // If insert mutliple
 
