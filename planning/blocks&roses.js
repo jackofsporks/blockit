@@ -9,7 +9,7 @@
 // multi: has start, body, end. can it have parts of different types??? No part determines the behavior of other parts? What about inpout's type attribute?!
 // syntax: has start, body??, end <-- singular body + just manipulated by other stuff
 // token: a word/name in two parts --> stuff around the cursor
-// unarmed/internal/inside voice/contained/contents/innerds/guts: follows 2 but not 1 or 3 rules of block
+// unarmed/internal/inside voice/contained/contents/innerds/guts: follows 2 but not 1 or 3 rules of block. left + right + separators
 // vvv Rules? vvv
 // If it's editable then we need to know its indexes
 let block
