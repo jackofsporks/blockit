@@ -6,7 +6,7 @@
 // block: 3. expression or declaration in a markup, styling, or programming language (controlled language?!)
 // block: has a start, left, middle, right, end
 // entities: block/phrase, multi, syntax, unarmed, token??
-// multi: has body. can it have parts of different types??? No part determines the behavior of other parts? What about inpout's type attribute?!
+// multi: has start, body, end. can it have parts of different types??? No part determines the behavior of other parts? What about inpout's type attribute?!
 // syntax: has start, body??, end <-- singular body + just manipulated by other stuff
 // unarmed/internal/inside voice/contained/contents/innerds/guts: left + right + right + separators. follows 2 but not 1 or 3 rules of block.
 // anchors + items + separators or entities + separators or left + entities + separators
@@ -151,7 +151,7 @@ entity = {
 // right --> "and other stuff"
 // end --> "</some-tag>"
 
-// <ta|g attribute1="value1 value2">stoof<p>other stoof</p></targ>
+// <ta|g attribute1="value1 value2">stoof<p>other stoof</p></tag>
 entity = {
   parent: {"another tag entity"},
   type: "block",
@@ -163,7 +163,7 @@ entity = {
     value: ["ta", "g"], left: "ta", right: "g",
     // siblings: [""], // No sibs for tags?? Repeats are ok so no need?? What about in a table when it matters which order the siblings come in?
     // siblings: [[older],[younger]],
-    siblings: {older:[], younger:[]},
+    siblings: {older:[], younger:[]}, // token no siblings
     // For exporing up or down if needed. Then maybe don't need sibs and parent at start...? But really good to have access to them now... Maybe deeper access if needed.
     beforeCursor: "",
     afterCursor: "",
@@ -172,9 +172,10 @@ entity = {
     // edits: ["parent.left.left","parent.end.body"], // don't need deletes:this.parent because it's assumed because its postion should be end
     // edits: [{start: 100, end: 112}]
   },
+  siblings: {older: ["tag", "tag"], younger: ["tag"]}, // block has siblings
   location:{start: 0, end: 42},
   start: /</,
-  left: {
+  left/parent: {
     type: "block",
     position: "left",
     parent: entity,
@@ -184,13 +185,15 @@ entity = {
     middle: null, // or ""
     right: {
       type: "multi",
-      body: ["attribute1"] // Need more than strings??
+      start: null,
+      body: ["attribute1"], // Need more than strings??
+      end: null
     },
     end: null
   },
   // leftModifier: {type: "multi", position:"leftModifier",},
   middle: />/,
-  right/value/result: {type: "multi", body: [
+  right/children: {type: "multi", body: [
     {type: "multi"??, name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
     // {type: "multi"??, species: "TextNode", body: ["stoof"]}, // body of words but don't need to know that
     {type: "block", name: "p", location: {start: 5, end: 8}} // NOTE location so when offereing to change tag name of entity then can highlight what will be deleted as invalid. id:81 gh:90 ic:gh
@@ -233,3 +236,8 @@ entity = {
 // keywords (functions??) --> syntax??
 
 // Characters that are undeletable without deleting the whole block...?? Nope?? Because instead have no middle!
+
+// name stuff vvvv
+// syntax + ui
+// always valid code
+// valid + armor + lock --> block lock
