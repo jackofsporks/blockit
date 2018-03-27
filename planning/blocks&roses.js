@@ -1,3 +1,12 @@
+// NONE OF THAT MATTERS!!!!
+// BLOCKIT NEEDS TO KNOW ONLY A FEW THINGS
+// 1. When to delete
+// 2. The location of the block to delete
+// 3. The location of the mirror-edit
+// 4. What it is valid to leave behind
+// everything else is for the language to figure out for itself
+// now we need a different name...??
+
 // <some-tag attribute1="value1 value2" attribute2>contents</some-tag>
 //
 // Definitions
@@ -22,8 +31,8 @@ entity = {
     parent: entity,
     type: "token",
     location: "parent.right.body.0.3",
-    value: ["valu", "e1"], left: "valu", right: "e1"
-    siblings: ["value2"]?? // Need to know siblings of entity. Example is input tag with type attribute of number then change value to type of address. Have to change other attributes maybe. Maybe just explore siblings if needed.
+    value: ["valu", "e1"], left: "valu", right: "e1",
+    siblings: ["value2"]//?? // Need to know siblings of entity. Example is input tag with type attribute of number then change value to type of address. Have to change other attributes maybe. Maybe just explore siblings if needed.
   },
   // ...
   right: {
@@ -31,7 +40,7 @@ entity = {
     position: "right",
     body: ["value1", "value2"],
     // start: "\"", end: "\"", separator: /\s/ <-- need this?
-    siblings...??
+    siblings:[]//...??
   },
   // ...
   siblings: [] // See notes in token siblings.
@@ -42,21 +51,21 @@ entity = {
 // att|ribute1="value1 value2"
 // The same thing... with differnt token position
 entity = {
-  parent: {"tag entity"},
+  parent: {me:"tag entity"},
   deleters: /[\s"=]/, // but whitespace in the right place. maybe a function instead.
   token: {
     parent: entity,
     type: "token",
     location: "parent.left.2", // of cursor
     value: ["att", "ribute"], left: "att", right: "ribute",
-    siblings: ["attribute2"]??,
+    siblings: ["attribute2"],//??
     edits: this.parent.left // don't need deletes:this.parent because it's assumed because its postion should be end
   },
-  location:{start: 3, end: 28}
+  location:{start: 3, end: 28},
   start: /\s+/,
   left: "attribute",
   middle: /=\"/,
-  right: {type: "multi"...}, // If change attribute then need to know values
+  right: {type: "multi"},// If change attribute then need to know values
   end: /\"/,
   // siblings: this.parent.children - this <-- use parent
   siblings: ["attribute2"]
@@ -68,12 +77,12 @@ entity = {
 entity = {
   start: "<",
   left: {
-    type: ??,
+    // type: ??,
     position: "left",
     start: "",
     left: "tag",
     middle: "",
-    right: {start:/\s/, left:"attribute"...}
+    right: {start:/\s/, left:"attribute"}//...
   },
   middle: ">",
   right: "stoof",
@@ -86,7 +95,7 @@ entity = {
 }
 
 entity = {
-  parent: {"another tag entity"},
+  parent: {you:"another tag entity"},
   isAnchor: false, // a block can't be an anchor. can a block have anchors instead??
   type: "block",
   deleters: /[<>{}]/, // start + middle + end...? Nopes can't do it for attributes with values. DO FUNCTION INSTEAD!
@@ -108,7 +117,7 @@ entity = {
   },
   location:{start: 0, end: 42},
   start: /</,
-  left/anchor: {
+  leftOranchor: {
     type: "unarmed",
     position: "left",
     parent: entity,
@@ -122,8 +131,8 @@ entity = {
   },
   // leftModifier: {type: "multi", position:"leftModifier",},
   middle: />/,
-  right/value/result: {type: "multi", body: [
-    {type: "multi"??, name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
+  rightOrvalueOrresult: {type: "multi", body: [
+    {type: "multi??", name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
     // {type: "multi"??, species: "TextNode", body: ["stoof"]}, // body of words but don't need to know that
     {type: "block", name: "p", location: {start: 5, end: 8}} // NOTE location so when offereing to change tag name of entity then can highlight what will be deleted as invalid. id:81 gh:90 ic:gh
   ]}, // Everything as text or also direct children tag names? Multi?
@@ -153,7 +162,7 @@ entity = {
 
 // <ta|g attribute1="value1 value2">stoof<p>other stoof</p></tag>
 entity = {
-  parent: {"another tag entity"},
+  parent: {them:"another tag entity"},
   type: "block",
   deleters: function(char){return true}, // start + middle + end...? Nopes can't do it for attributes with values. DO FUNCTION INSTEAD!
   token: { // NOTE Only current entity has a token id:80 gh:89 ic:gh
@@ -175,7 +184,7 @@ entity = {
   siblings: {older: ["tag", "tag"], younger: ["tag"]}, // block has siblings
   location:{start: 0, end: 42},
   start: /</,
-  left/parent: {
+  leftOrparent: {
     type: "block",
     position: "left",
     parent: entity,
@@ -193,8 +202,8 @@ entity = {
   },
   // leftModifier: {type: "multi", position:"leftModifier",},
   middle: />/,
-  right/children: {type: "multi", body: [
-    {type: "multi"??, name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
+  rightOrchildren: {type: "multi", body: [
+    {type: "multi??", name: "TextNode", location: {start: 5, end: 8}}, // body of words but don't need to know that
     // {type: "multi"??, species: "TextNode", body: ["stoof"]}, // body of words but don't need to know that
     {type: "block", name: "p", location: {start: 5, end: 8}} // NOTE location so when offereing to change tag name of entity then can highlight what will be deleted as invalid. id:81 gh:90 ic:gh
   ]}, // Everything as text or also direct children tag names? Multi?
