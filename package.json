@@ -1,8 +1,8 @@
 {
   "name": "blockit",
   "main": "./lib/blockit",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.1.0",
+  "description": "Turning roadblock of syntax into a UI issue",
   "keywords": [
   ],
   "activationCommands": {
@@ -14,5 +14,13 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+  },
+  "providedServices": {
+    "blockit": {
+      "description": "Add your own langauge by providing name and input taker function",
+      "versions": {
+        "0.1.x": "addLanguage"
+      }
+    }
   }
 }
