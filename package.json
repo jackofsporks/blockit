@@ -5,9 +5,6 @@
   "description": "Turning roadblock of syntax into a UI issue",
   "keywords": [
   ],
-  "activationCommands": {
-    "atom-workspace": "blockit:toggle"
-  },
   "repository": "https://github.com/atom/blockit",
   "license": "MIT",
   "engines": {
@@ -15,11 +12,10 @@
   },
   "dependencies": {
   },
-  "providedServices": {
-    "blockit": {
-      "description": "Add your own langauge by providing name and input taker function",
+  "consumedServices": {
+    "blockitLanguage": {
       "versions": {
-        "0.1.x": "addLanguage"
+        "0.1.0": "addLanguage"
       }
     }
   }
